@@ -3,7 +3,9 @@
 const Router = require('express').Router;
 const debug = require('debug')('note:note-router');
 const jsonParser = require('body-parser').json();
+
 const Apple = require('../model/apple.js');
+
 const appleRouter = new Router();
 
 appleRouter.get('/api/apple/:id', function(req, res, next){

@@ -18,7 +18,7 @@ const Apple = module.exports = function(type, color, size){
   this.size = size;
 };
 
-Apple.createApple = function(apple){
+Apple.createApple = function(){
   debug('createApple');
   try{
     let apple = new Apple(apple.color, apple.color);
