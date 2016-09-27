@@ -18,7 +18,7 @@ const Apple = module.exports = function(type, color, size){
   this.size = size;
 };
 
-Apple.createApple = function(apple) {
+Apple.createApple = function(apple){
   debug('createApple');
   try{
     let apple = new Apple(apple.color, apple.color);
@@ -28,7 +28,30 @@ Apple.createApple = function(apple) {
   }
 };
 
-Apple.fetchNote = function(id){
-  debug('fetchNote');
-  return storage.fetchItem('note', id);
+Apple.fetchApple = function(id){
+  debug('fetchApple');
+  return storage.fetchItem('apple', id);
+};
+
+Apple.updateApple = function(id, _apple){
+  debug('fetchApple');
+  return storage.fetchItem('apple', id)
+  .catch( err => Promise.reject(createError(404, err.message)))
+  .then( apple => {
+    for (var key in apple){
+      if (key === 'id') continue;
+      if (_apple[key]) apple[key] = _apple[key];
+    }
+    return storage.createItem('apple', apple);
+  });
+};
+
+Apple.deleteApple = function(id){
+  debug('deleteApple');
+  return storage.deleteItem('apple', id);
+};
+
+Apple.fetchIDs = function(){
+  debug('fetchIDs');
+  return storage.availIDs('apple');
 };
