@@ -110,7 +110,7 @@ describe('testing the /api/apple route', function(){
 
       it('should return an apple', done => {
         let updateData = {type: 'fuji', color: 'red', size: 'medium'};
-        request.put(`${url}/api/apple/${this.tempApple.id}`)
+        request.put(`${url}/api/apple/?id=${this.tempApple.id}`)
         .send(updateData)
         .end((err, res) => {
           if(err) return done(err);
