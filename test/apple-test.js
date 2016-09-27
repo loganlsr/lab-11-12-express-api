@@ -48,9 +48,8 @@ describe('testing the /api/apple route', function(){
 
     describe('with an invalid id', function(){
       it('should respond with 404', done => {
-        request.get(`${url}/api/apple?id=1234`)
+        request.get(`${url}/api/apple/1234`)
         .end((err, res) => {
-          if(err) return done(err);
           expect(res.status).to.equal(404);
           done();
         });
@@ -64,7 +63,7 @@ describe('testing the /api/apple route', function(){
 
   describe('testing POST requests to /api/apple', function(){
     describe('with a valid body', function(){
-      
+
       after(done => {
         if (this.tempApple){
           Apple.deleteApple(this.tempApple.id)
