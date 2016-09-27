@@ -16,19 +16,22 @@ const exampleApple = {
 describe('testing the /api/apple route', function(){
   describe('testing GET requests to /api/apple', function(){
     describe('with a valid id', function(){
+
       before(done => {
         Apple.createApple(exampleApple)
-        .then(apple => {
+        .then( apple => {
           this.tempApple = apple;
           done();
         })
         .catch(err => done(err));
       });
-      after(done => {
+
+      after( done => {
         Apple.deleteApple(this.tempApple.id)
-        .then(() => done())
-        .catch(err => done(err));
+        .then( () => done())
+        .catch( err => done(err));
       });
+
       it('should return an apple', done => {
         request.get(`${url}/api/apple/${this.tempApple.id}`)
         .end((err, res) => {
@@ -42,6 +45,7 @@ describe('testing the /api/apple route', function(){
         });
       });
     });
+
     describe('with an invalid id', function(){
       it('should respond with 404', done => {
         request.get(`${url}/api/apple?id=1234`)
@@ -52,12 +56,15 @@ describe('testing the /api/apple route', function(){
         });
       });
     });
+
     describe('with no id', function(){
 
     });
   });
+
   describe('testing POST requests to /api/apple', function(){
     describe('with a valid body', function(){
+      
       after(done => {
         if (this.tempApple){
           Apple.deleteApple(this.tempApple.id)
@@ -65,6 +72,7 @@ describe('testing the /api/apple route', function(){
           .catch(err => done(err));
         }
       });
+
       it('should return an apple', done => {
         request.post(`${url}/api/apple`)
         .send(exampleApple)

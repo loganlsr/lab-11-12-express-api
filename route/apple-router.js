@@ -23,7 +23,7 @@ appleRouter.get('/api/apple/', function(req, res, next) {
 
 appleRouter.post('/api/apple/', jsonParser, function(req, res, next){
   debug('hit route POST /api/apple');
-  Apple.createNote(req.body)
+  Apple.createApple(req.body)
   .then(apple => res.json(apple))
   .catch(err => next(err));
 });

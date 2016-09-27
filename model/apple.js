@@ -9,8 +9,8 @@ const storage = require('../lib/storage.js');
 const Apple = module.exports = function(type, color, size){
   debug('instantiate apple');
   if (!type) throw createError(400, 'expected type');
-  if (!color) throw createError(400, 'exptected color');
-  if (!size) throw createError(400, 'exptected size');
+  if (!color) throw createError(400, 'expected color');
+  if (!size) throw createError(400, 'expected size');
 
   this.id = uuid.v1();
   this.type = type;
@@ -18,10 +18,10 @@ const Apple = module.exports = function(type, color, size){
   this.size = size;
 };
 
-Apple.createApple = function(){
+Apple.createApple = function(_apple){
   debug('createApple');
   try{
-    let apple = new Apple(apple.color, apple.color);
+    let apple = new Apple(_apple.type, _apple.color, _apple.size);
     return storage.createItem('apple', apple);
   } catch (err) {
     return Promise.reject(err);
