@@ -11,3 +11,5 @@ Dependencies to install:
 To install, type in console: npm i -S *npm module here*
 
 To start Server, run the following command in your terminal: npm start
+
+To run your tests, run the following command in your terminal: mocha
